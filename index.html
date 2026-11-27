@@ -1,40 +1,80 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>儀借用狀態</title>
-  <style>
-    body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 30px; background: #f7f9fc; }
-    table { margin: 0 auto; border-collapse: collapse; width: 80%; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-    th { background: #498db; color: white; }
-    .available { color: green; font-weight: bold; }
-    .loaned { color: red; font-weight: bold; }
-  </style>
+<meta charset="utf-8">
+
+<title>儀器借用系統</title>
+
+<style>
+
+body{
+  font-family: Arial;
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:20px;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+}
+
+button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  background:#0078d4;
+  color:white;
+  border:none;
+  border-radius:5px;
+}
+
+</style>
+
 </head>
+
 <body>
-  <h1>儀器借用狀態</h1>
-  <table>
-    <tr>
-      <th>儀器名稱</th>
-      <th>狀態</th>
-      <th>借用者</th>
-      <th>借用日期</th>
-      <th>歸還日期    </tr>
-    <tr>
-      <td>示波器</td>
-      <td class="loaned">借用中</td>
-      <td>張三</td>
-      <td>2025-04-05</td>
-      <td>2025-04-10</td>
-    </tr>
-    <tr>
-      <td>頻譜分析儀</td>
-      <td class="available">可借用</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-  </table>
+
+<div class="card">
+
+<h2>儀器借用系統</h2>
+
+<h3>設備：EQ001 示波器</h3>
+
+<input
+id="emp"
+placeholder="輸入工號">
+
+<button onclick="borrow()">
+借出
+</button>
+
+</div>
+
+<script>
+
+function borrow(){
+
+let emp=
+document.getElementById('emp').value;
+
+if(emp==""){
+alert("請輸入工號");
+return;
+}
+
+alert("借出成功\n工號："+emp);
+
+}
+
+</script>
+
 </body>
 </html>
