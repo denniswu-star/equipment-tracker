@@ -2,57 +2,39 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>儀器借用系統</title>
+  <title>儀借用狀態</title>
   <style>
-    body font-family: 'Segoe UI', sans-serif; text-align: center; padding: 50px; background: #f7f9fc; }
-    .container { max-width: 600px; margin:0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    h1 color: #2c3e50; }
-    input, select, button { margin: 10px 0; padding: 10px; font-size: 16px; width: 100%; }
-    button { background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    button:hover { background: #2980b9; }
- </style>
+    body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 30px; background: #f7f9fc; }
+    table { margin: 0 auto; border-collapse: collapse; width: 80%; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background: #498db; color: white; }
+    .available { color: green; font-weight: bold; }
+    .loaned { color: red; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>儀器借用申請</h1>
-    <p>請掃描儀器旁的 QR Code 進行借用</p>
-    <form id="loanForm" action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="hidden" name="instrument_id" id="instrument_id" value="儀器123">
-       type="hidden" name="instrument_name" id="instrument_name" value="未知儀器">
-
-      <label>借用者姓名：</label>
-      <input type="text" name="name" required />
-
-      <label>部門：</label>
-      <select name="department" required>
-        <option value="">-- 選擇部門 --</option>
-        <option value="研發部">研發部</option>
-        <option value="測試部測試部</option>
-        <option value="工程部">工程部</option>
-        <option value="其他">其他</option>
-      </select>
-
-      <label>借用日期：</label>
-      <input type="date" name="loan_date" required />
-
-      <label>歸還日期：</label>
-      <input type="date" name="return_date" required />
-
-      <button type="submit">提交申請</button>
-    </form>
- </div>
-
-  <script>
-    // 自動填入儀器 ID 與名稱（由 QR Code 傳入）
-    const urlParams = new URLSearchParams(window.location.search);
-    const instrumentId = urlParams.get('id');
-    const instrumentName = urlParams.get('name') || '未知儀器';
-
-    if (instrumentId) {
-      document.getElementById('instrument_id').value = instrumentId;
-      document.getElementById('instrument_name').value =Name;
-    }
-  </script>
+  <h1>儀器借用狀態</h1>
+  <table>
+    <tr>
+      <th>儀器名稱</th>
+      <th>狀態</th>
+      <th>借用者</th>
+      <th>借用日期</th>
+      <th>歸還日期    </tr>
+    <tr>
+      <td>示波器</td>
+      <td class="loaned">借用中</td>
+      <td>張三</td>
+      <td>2025-04-05</td>
+      <td>2025-04-10</td>
+    </tr>
+    <tr>
+      <td>頻譜分析儀</td>
+      <td class="available">可借用</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </table>
 </body>
 </html>
